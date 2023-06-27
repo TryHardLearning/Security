@@ -6,16 +6,16 @@ body {
   }
 
   #upload-form {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    width: 620px;
+    margin: 20px auto;
+    padding: 15px;
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.4));
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 4px 2px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
 
-  #upload-form input[type="file"],
   #upload-form input[type="text"] {
     width: 100%;
     padding: 10px;
@@ -32,4 +32,25 @@ body {
   #preview img {
     max-width: 300px;
     max-height: 300px;
+  }
+  #desc{
+    resize: none;
+    width: 100%;
+    
+  }
+  .camp-size{
+    flex: 1;
+  }
+  .input{
+    max-width: 97%;
+  }
+  .container-msg{
+    max-width: 50%  ;
+  }
+  .container-fluid{
+    background-color: #ddd;
+  }
+  .img-chat{
+    width: 220px;
+    height: auto;
   }
