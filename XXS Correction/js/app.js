@@ -1,27 +1,39 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyBLdaxeo5X98dyMslfFoTl2yZ_ezxXZa28",
-  authDomain: "chat-app-security-project.firebaseapp.com",
-  projectId: "chat-app-security-project",
-  storageBucket: "chat-app-security-project.appspot.com",
-  messagingSenderId: "386228277363",
-  appId: "1:386228277363:web:ed6a4be33dce8bf16d5a06"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-
+const loginInput = document.getElementById("login");
+const passwordInput = document.getElementById("password");
 const photoInput = document.getElementById("photo-url");
 const titleInput = document.getElementById("title");
 const descInput = document.getElementById("desc");
 const chatApp = document.getElementById("chatApp");
-  
+
+let loginEfect = false;
+
+let Mylogin = "Lucas"
+
+let Mypassword = 654
+
+  const Hash = (password)=> {
+    let hash = 0;
+
+    for (let i = 0; i < password.length; i++) {
+      const charCode = password.charCodeAt(i);  
+      hash += charCode;
+    }
+
+    return hash;
+  }
+
+const loginNow = ()=>{
+
+  let password = passwordInput.value;
+  let login = loginInput.value;
+  let pssw = Hash(password);
+  if(login == Mylogin && pssw == Mypassword){
+    document.getElementById("loginMap").remove();
+    loginEfect = true;
+    alert("Logado com Sucesso");
+  }
+
+}
 function sanitizeInput(input) {
   
   return input
@@ -38,8 +50,7 @@ const imgSanitize = () =>{
   return url;
 }
 const submitCheep = () =>{    
-    
-    alert   ("Primeira parte");
+    if(loginEfect){
     let title = sanitizeInput(titleInput.value);
     let img = imgSanitize()
     let desc = sanitizeInput(descInput.value);
@@ -53,12 +64,16 @@ const submitCheep = () =>{
     `;
     chatApp.innerHTML += DOM;
     console.log("Rodou");
-    loadInMyDatabase();
+    /*loadInMyDatabase();*/
+  }else{
+    alert("Faça Login Para Postar");
+  }
 }
 
 
 const submitButton = document.getElementById("submit-btn").addEventListener('click', submitCheep);  
-
+const loginBtn = document.getElementById("loginStart").addEventListener('click', loginNow);
+/*
 const { Pool } = require('pg');
 
 const pool = new Pool({
@@ -88,8 +103,7 @@ const loadInMyDatabase = async () =>{
   }
 }
 
-
-/*
+ /*   
 CREATE TABLE chatapp (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255),
