@@ -73,6 +73,7 @@ const submitCheep = () =>{
 
 const submitButton = document.getElementById("submit-btn").addEventListener('click', submitCheep);  
 const loginBtn = document.getElementById("loginStart").addEventListener('click', loginNow);
+
 /*
 const { Pool } = require('pg');
 
